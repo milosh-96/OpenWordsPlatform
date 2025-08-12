@@ -1,0 +1,37 @@
+@using OpenWordsPlatform.Common.Models
+@using OrchardCore.ContentManagement
+@{
+	var contentItem = (ContentItem)Model.ContentItem;
+	var part = contentItem.As<ConjugationPart>();
+	var regularVerb = T["Regular"];
+	var irregularVerb = T["Irregular"];
+}
+<div class="conjugationPart">
+	<p>@T["This verb is <strong>{0}</strong>.", part.IsRegular.Value ? regularVerb : irregularVerb]</p>
+	<table class="table table-striped-columns">
+		<tr>
+			<th scope="row">Ich</th>
+			<td>@part.FirstSingular.Text</td>
+		</tr>
+		<tr>
+			<th scope="row">Du</th>
+			<td>@part.SecondSingular.Text</td>
+		</tr>
+		<tr>
+			<th scope="row">Er/Sie/Es</th>
+			<td>@part.ThirdSingular.Text</td>
+		</tr>
+		<tr>
+			<th scope="row">Wir</th>
+			<td>@part.FirstPlural.Text</td>
+		</tr>
+		<tr>
+			<th scope="row">Ihr</th>
+			<td>@part.SecondPlural.Text</td>
+		</tr>
+		<tr>
+			<th scope="row">Sie</th>
+			<td>@part.ThirdPlural.Text</td>
+		</tr>
+	</table>
+</div>
