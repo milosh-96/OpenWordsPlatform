@@ -3,8 +3,8 @@
 @{
 	var contentItem = (ContentItem)Model.ContentItem;
 	var part = contentItem.As<ConjugationPart>();
-	var regularVerb = T["Regular"];
-	var irregularVerb = T["Irregular"];
+	var regularVerb = T["regular"];
+	var irregularVerb = T["irregular"];
 }
 <div class="conjugationPart">
 	<p>@T["This verb is <strong>{0}</strong>.", part.IsRegular.Value ? regularVerb : irregularVerb]</p>
