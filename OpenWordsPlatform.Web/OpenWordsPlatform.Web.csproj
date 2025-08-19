@@ -21,6 +21,7 @@
     <PackageReference Include="Lombiq.BaseTheme.Core" Version="9.0.1-alpha.4.osoe-1069" />
     <PackageReference Include="Lombiq.BaseTheme.Native" Version="9.0.1-alpha.4.osoe-1069" />
     <PackageReference Include="Lombiq.HelpfulExtensions" Version="10.0.1-alpha.11.osoe-1069" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.19" />
     <PackageReference Include="OrchardCore.Logging.NLog" Version="2.1.7" />
     <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="2.1.7" />
   </ItemGroup>
