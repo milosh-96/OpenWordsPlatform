@@ -43,7 +43,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            sudo chown www-data:www-data -R /var/www/aspnet/openwords-publish
             cd /var/www/aspnet/openwords-publish
             # Example: restart systemd service
             sudo systemctl stop kestrel-openwordsplatform
