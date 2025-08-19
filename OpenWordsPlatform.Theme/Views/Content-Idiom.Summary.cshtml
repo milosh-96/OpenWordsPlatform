@@ -1,9 +1,8 @@
 ﻿@{
     var title = Model.ContentItem.DisplayText;
-    var wordPart = Model.ContentItem.Content.Word;
-    var meaningImage = wordPart.MeaningImage.Paths[0];
-    var meaning = wordPart.Meaning.Text;
-    ContentItem wordType = await Orchard.GetTaxonomyTermAsync((string)wordPart.Type.TaxonomyContentItemId, (string)wordPart.Type.TermContentItemIds[0]);
+    var idiomPart = Model.ContentItem.Content.Idiom;
+    var meaningImage = idiomPart.MeaningImage.Paths[0];
+    var meaning = idiomPart.Meaning.Text;
 }
 
 <div class="wordsList__item">
@@ -14,7 +13,7 @@
         }
         else
         {
-            <img src="https://placehold.co/900x700?text=@wordType.DisplayText" alt="@title" />
+            <img src="https://placehold.co/900x700?text=Idiom" alt="@title" />
         }
     </div>
     <div class="wordsList__itemTitle">

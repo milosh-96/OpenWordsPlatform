@@ -7,17 +7,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OrchardCore.Taxonomies.Services;
+using YesSql;
+using OrchardCore;
 
-namespace OpenWordsPlatform.Common.Handlers
+namespace OpenWordsPlatform.Common.Handlers;
+
+public class WordHandler : ContentPartHandler<Word>
 {
-    public class WordHandler : ContentPartHandler<Word>
+    private readonly IOrchardHelper  _orchardHelper;
+
+    public WordHandler(IOrchardHelper orchardHelper)
     {
-        public override Task UpdatedAsync(UpdateContentContext context, Word part) =>
-        Task.Run(() =>
+        _orchardHelper = orchardHelper;
+    }
+    
+    public override async Task UpdatedAsync(UpdateContentContext context, Word part) {
+        ContentItem gender = await _orchardHelper.GetTaxonomyTermAsync(part.GenderTaxonomy.TaxonomyContentItemId, part.GenderTaxonomy.TermContentItemIds[0]);
+        context.ContentItem.Content.TitlePart.Title = gender == null ? part.Content.Name.Text : SetArticle(gender) + part.Content.Name.Text;
+        context.ContentItem.DisplayText = context.ContentItem.Content.TitlePart.Title;
+    }
+
+    private string SetArticle(ContentItem gender)
+    {
+        if(gender.DisplayText == GenderTypes.None)
         {
-            string gender = part.Content.Gender.Text == GenderTypes.None ? string.Empty : part.Content.Gender.Text;
-            context.ContentItem.Content.TitlePart.Title = string.IsNullOrEmpty(gender) ? part.Content.Name.Text : gender + " " + part.Content.Name.Text;
-            context.ContentItem.DisplayText = context.ContentItem.Content.TitlePart.Title;
-        });
+            return string.Empty;
+        }
+        return gender.Content.Gender.DefiniteArticle.Text + " ";
     }
 }

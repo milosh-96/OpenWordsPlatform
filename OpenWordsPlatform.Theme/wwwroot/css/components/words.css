@@ -1,0 +1,11 @@
+.wordsList__item {
+    display: flex;
+    gap: 24px;
+
+    .wordsList__itemImage {
+        flex: 0 0 300px;
+        img {
+            width: 100%;
+       }
+    }
+}
