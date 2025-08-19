@@ -22,7 +22,7 @@ jobs:
         run: dotnet publish -c Release -o ./publish
 
       - name: Deploy to VPS (rsync over SSH)
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
           port: 30222
@@ -43,9 +43,8 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            sudo chown www-data:www-data -R /var/www/aspnet/openwords-publish
             cd /var/www/aspnet/openwords-publish
             # Example: restart systemd service
-            sudo service kestrel-openwordsplatform stop
-            sudo service kestrel-openwordsplatform start
+            sudo systemctl stop kestrel-openwordsplatform
+            sudo systemctl start kestrel-openwordsplatform
 
