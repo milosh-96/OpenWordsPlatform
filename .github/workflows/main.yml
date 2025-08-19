@@ -46,6 +46,6 @@ jobs:
             sudo chown www-data:www-data -R /var/www/aspnet/openwords-publish
             cd /var/www/aspnet/openwords-publish
             # Example: restart systemd service
-            sudo service kestrel-openwordsplatform stop
-            sudo service kestrel-openwordsplatform start
+            sudo systemctl stop kestrel-openwordsplatform
+            sudo systemctl start kestrel-openwordsplatform
 
