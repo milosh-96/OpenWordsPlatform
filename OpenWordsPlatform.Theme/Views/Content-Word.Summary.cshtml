@@ -1,5 +1,5 @@
 ﻿@{
-    var title = Model.ContentItem.DisplayText;
+    var title = WordService.GetDefaultArticle(Model.ContentItem) + " " + Model.ContentItem.DisplayText;
     var wordPart = Model.ContentItem.Content.Word;
     var meaningImage = wordPart.MeaningImage.Paths[0];
     var meaning = wordPart.Meaning.Text;
@@ -24,4 +24,3 @@
         </h3>
     </div>
 </div>
-

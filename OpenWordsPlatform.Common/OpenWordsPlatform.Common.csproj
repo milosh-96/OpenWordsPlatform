@@ -20,4 +20,8 @@
     <PackageReference Include="OrchardCore.Taxonomies" Version="2.1.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+
 </Project>

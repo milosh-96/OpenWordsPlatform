@@ -1,2 +1,22 @@
 @import "components/conjugation.css";
 @import "components/words.css";
+
+.layoutContent__body::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500%;
+    z-index: 201;
+    pointer-events:none;
+    background: url("../images/noise.jpg");
+    opacity: 0.05;
+    content: "";
+    overflow: hidden;
+}
+
+.layoutHeader__body {
+    background: red;
+    color: #fff;
+    a {color: inherit;}
+}
