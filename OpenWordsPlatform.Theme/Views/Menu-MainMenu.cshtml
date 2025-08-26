@@ -1,0 +1,21 @@
+@{
+    // By using a tag builder, sub items can alter the
+    // menu element. Note how Display is called on the menu
+    // items before the tag is actually rendered.
+
+    TagBuilder tag = Tag(Model, "ul");
+    tag.AddCssClass("navbar-nav");
+    tag.AddCssClass("me-auto");
+    tag.AddCssClass("mb-2");
+    tag.AddCssClass("mb-lg-0");
+
+    foreach (var item in Model.Items)
+    {
+        tag.InnerHtml.AppendHtml(await DisplayAsync(item));
+    }
+
+    Model.Classes.Add("main-menu");
+ 
+}
+
+    @tag

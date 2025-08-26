@@ -1,3 +1,4 @@
+@import "abstracts/native-variables.css";
 @import "components/conjugation.css";
 @import "components/words.css";
 
@@ -16,7 +17,14 @@
 }
 
 .layoutHeader__body {
-    background: red;
+    background: var(--color-primary);
+    border-bottom: 8px solid var(--color-primary-dark);
     color: #fff;
     a {color: inherit;}
+}
+
+.btn.btn-owp-search {
+    --bs-btn-color: var(--search-button-color);
+    --bs-btn-bg: var(--search-button-bg);
+    --bs-btn-hover-bg: var(--search-button-hover-bg);
 }

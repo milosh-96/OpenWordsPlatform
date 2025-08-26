@@ -1,0 +1,13 @@
+@{
+    ContentItem word = (ContentItem)Model.ContentItem;
+}
+<div class="word">
+    <h2>@WordService.GetWordWithDefaultArticle(word)</h2>
+    <div class="word__header">
+        <div class="word__image">
+
+        </div>
+
+        @await DisplayAsync(Model.Content.FlowPart)
+    </div>
+</div>

@@ -1,9 +1,0 @@
-﻿@using OrchardCore.Navigation
-
-@{
-    var menu = Model.Item as MenuItem ?? new MenuItem();
-}
-
-<a id="@menu.Id"
-   class="@string.Join(" ", Model.Classes)"
-   href="@menu.Href">@menu.Text</a>

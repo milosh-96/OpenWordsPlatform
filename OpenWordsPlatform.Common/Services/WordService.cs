@@ -17,4 +17,16 @@ public static class WordService
         }
         return definiteArticle;
     }
+    public static string? GetWordWithDefaultArticle(ContentItem item)
+    {
+        string? definiteArticle = null;
+        foreach (var widget in item.Content.FlowPart.Widgets)
+        {
+            if (widget["ContentType"] == ContentTypes.ArticlesWidget)
+            {
+                definiteArticle = widget["ArticlesPart"]["DefiniteSingular"]["Text"] + " ";
+            }
+        }
+        return definiteArticle + item.DisplayText;
+    }
 }

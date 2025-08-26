@@ -1,0 +1,29 @@
+﻿@using OrchardCore.ContentManagement
+@using OrchardCore.Menu.Models
+@{
+    ContentItem contentItem = Model.ContentItem;
+    var linkMenuItemPart = contentItem.As<LinkMenuItemPart>();
+
+    TagBuilder tag = Tag(Model, "a");
+
+    var url = linkMenuItemPart.Url;
+    if (url.StartsWith('/'))
+    {
+        url = '~' + url;
+    }
+
+    if (url.StartsWith("~/", StringComparison.Ordinal))
+    {
+        url = Url.Content(linkMenuItemPart.Url);
+    }
+
+    if (!string.IsNullOrEmpty(linkMenuItemPart.Target))
+    {
+        tag.Attributes["target"] = linkMenuItemPart.Target;
+    }
+
+    tag.Attributes["href"] = url;
+    tag.AddCssClass("nav-link");
+    tag.InnerHtml.Append(contentItem.DisplayText);
+}
+@tag
