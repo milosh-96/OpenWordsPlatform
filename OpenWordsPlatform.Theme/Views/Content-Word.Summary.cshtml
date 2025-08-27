@@ -20,6 +20,7 @@
     <div class="wordsList__itemTitle">
         <h3>
             <a display-for="@Model.ContentItem">@title</a>
+            <p>@WordService.GetPluralFormOfWordWithArticle(@Model.ContentItem)</p>
             <p>@meaning</p>
         </h3>
     </div>
