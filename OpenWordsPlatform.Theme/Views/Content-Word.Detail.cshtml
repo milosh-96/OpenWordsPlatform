@@ -20,5 +20,7 @@
 
     <div class="word__content">
         @T["Meaning"]: @word.Content.Word.Meaning.Text
+
+        @await DisplayAsync(Model.Content.FlowPart)
     </div>
 </div>
