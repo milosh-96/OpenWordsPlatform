@@ -9,3 +9,14 @@
        }
     }
 }
+
+
+.word {
+    .word__header {
+        display: flex;
+
+        .word__image {
+                         width: 50%;
+                     }
+    }
+}

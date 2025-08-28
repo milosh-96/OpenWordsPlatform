@@ -5,9 +5,20 @@
     <h2>@WordService.GetWordWithDefaultArticle(word)</h2>
     <div class="word__header">
         <div class="word__image">
-
+            <img asset-src="@word.Content.Word.MeaningImage.Paths[0]" />
         </div>
+        @if(WordService.HasArticlesWidget(word))
+        {
+            <div class="word__articles">
+                <p>@WordService.GetWordWithDefaultArticle(word)</p>
+                <p>@WordService.GetWordWithIndefiniteArticle(word)</p>
+                <p>@WordService.GetPluralFormOfWordWithArticle(word) - <em>plural</em></p>
+            </div>
+        }
+        
+    </div>
 
-        @await DisplayAsync(Model.Content.FlowPart)
+    <div class="word__content">
+        @T["Meaning"]: @word.Content.Word.Meaning.Text
     </div>
 </div>

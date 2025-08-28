@@ -5,6 +5,18 @@ namespace OpenWordsPlatform.Common.Services;
 
 public static class WordService
 {
+    public static bool HasArticlesWidget(ContentItem item)
+    {
+        foreach (var widget in item.Content.FlowPart.Widgets)
+        {
+            if (widget["ContentType"] == ContentTypes.ArticlesWidget)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static string? GetDefaultArticle(ContentItem item)
     {
         string? definiteArticle = null;
@@ -45,5 +57,17 @@ public static class WordService
             completeWord = article + item.Content.Word.PluralForm.Text;
         }
         return completeWord;
+    }
+    public static string? GetWordWithIndefiniteArticle(ContentItem item)
+    {
+        string? indefiniteArticle = null;
+        foreach (var widget in item.Content.FlowPart.Widgets)
+        {
+            if (widget["ContentType"] == ContentTypes.ArticlesWidget)
+            {
+                indefiniteArticle = widget["ArticlesPart"]["IndefiniteSingular"]["Text"] + " ";
+            }
+        }
+        return indefiniteArticle + item.DisplayText;
     }
 }
