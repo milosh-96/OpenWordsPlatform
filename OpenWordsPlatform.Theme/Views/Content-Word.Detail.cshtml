@@ -1,6 +1,8 @@
 @{
     ContentItem word = (ContentItem)Model.ContentItem;
+
 }
+@await DisplayAsync(Model.Content.ContentsMetadata)
 <div class="word">
     <h2>@WordService.GetWordWithDefaultArticle(word)</h2>
     <div class="word__header">
