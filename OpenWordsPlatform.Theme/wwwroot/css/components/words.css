@@ -3,9 +3,10 @@
     gap: 24px;
 
     .wordsList__itemImage {
-        flex: 0 0 300px;
+        flex: 0 0 128px;
         img {
             width: 100%;
+            max-width: 128px;
        }
     }
 }
