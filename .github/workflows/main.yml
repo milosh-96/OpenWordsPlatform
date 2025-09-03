@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build and Publish
-        run: dotnet publish -c Release -o ./publish
+        run: dotnet publish -c Release -p:PublishDir=../publish
 
       - name: Deploy to VPS (rsync over SSH)
         uses: appleboy/scp-action@master
@@ -44,8 +44,8 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
             # Example: restart systemd service
+            sudo systemctl stop kestrel-openwordsplatform
             sudo chmod 770 /var/www/aspnet/openwords-publish
             sudo chmod -R 770 /var/www/aspnet/openwords-publish/wwwroot
-            sudo systemctl stop kestrel-openwordsplatform
             sudo systemctl start kestrel-openwordsplatform
 
