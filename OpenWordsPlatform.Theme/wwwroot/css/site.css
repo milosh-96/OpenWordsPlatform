@@ -28,3 +28,7 @@
     --bs-btn-bg: var(--search-button-bg);
     --bs-btn-hover-bg: var(--search-button-hover-bg);
 }
+
+.content-item > header > h1 {
+    padding-block: 1rem;
+}
