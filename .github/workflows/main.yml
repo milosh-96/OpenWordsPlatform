@@ -25,7 +25,7 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
-          port: 30222
+          port: ${{ secrets.VPS_PORT }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           source: "publish/*"
@@ -39,12 +39,13 @@ jobs:
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.VPS_HOST }}
-          port: 30222
+          port: ${{ secrets.VPS_PORT }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            cd /var/www/aspnet/openwords-publish
             # Example: restart systemd service
+            sudo chmod 770 /var/www/aspnet/openwords-publish
+            sudo chmod -R 770 /var/www/aspnet/openwords-publish/wwwroot
             sudo systemctl stop kestrel-openwordsplatform
             sudo systemctl start kestrel-openwordsplatform
 
