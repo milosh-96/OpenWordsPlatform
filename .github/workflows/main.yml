@@ -29,11 +29,9 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           source: "publish/*"
-          target: "/var/www/aspnet/openwords-publish"
+          target: "/var/www/aspnet/openwords/temp"
           rm: false
           strip_components: 1
-          # Exclude App_Data folder from overwrite
-          exclude: "App_Data/*"
 
       - name: Restart App on VPS
         uses: appleboy/ssh-action@v1.2.0
@@ -43,9 +41,11 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
+            cp -a /var/www/aspnet/openwords/temp/. /var/www/aspnet/openwords/publish/
+            rm -r /var/www/aspnet/openwords/temp/*
             # Example: restart systemd service
             sudo systemctl stop kestrel-openwordsplatform
-            sudo chmod 770 /var/www/aspnet/openwords-publish
-            sudo chmod -R 770 /var/www/aspnet/openwords-publish/wwwroot
+            sudo chmod 770 /var/www/aspnet/openwords/publish
+            sudo chmod -R 770 /var/www/aspnet/openwords/publish/wwwroot
             sudo systemctl start kestrel-openwordsplatform
 
