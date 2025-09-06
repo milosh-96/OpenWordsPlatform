@@ -46,6 +46,7 @@ jobs:
             # Example: restart systemd service
             sudo systemctl stop kestrel-openwordsplatform
             sudo chmod 770 /var/www/aspnet/openwords/publish
+            sudo chmod -R 770 /var/www/aspnet/openwords/publish/App_Data
             sudo chmod -R 770 /var/www/aspnet/openwords/publish/wwwroot
             sudo systemctl start kestrel-openwordsplatform
 
